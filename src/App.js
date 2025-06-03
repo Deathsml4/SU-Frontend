@@ -64,7 +64,7 @@ function URLShortener() {
       if (response.ok) {
         const res = await response.text()
         const newID = JSON.parse(res).id;
-        const shortened = `http://localhost:3000/short/${newID}`;
+        const shortened = `https://jolly-grass-002fabb0f.6.azurestaticapps.net/short/${newID}`;
         const newShortenedURL = { fullUrl: url, shortUrl: shortened, shortId: newID };
         setShortenedURLList([...shortenedURLList, newShortenedURL]);
         setUrl('');

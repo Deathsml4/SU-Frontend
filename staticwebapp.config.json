@@ -4,13 +4,6 @@
       "route": "/*",
       "serve": "/index.html",
       "statusCode": 200
-    },
-    {
-      "route": "/short/{id}",
-      "methods": [
-        "get"
-      ],
-      "redirect": "http://localhost:8080/short/{id}"
     }
   ]
 }

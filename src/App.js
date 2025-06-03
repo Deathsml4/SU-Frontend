@@ -247,6 +247,7 @@ function URLShortener() {
 function RedirectShort() {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
+  const [originalUrl, setOriginalUrl] = useState('');
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -256,6 +257,8 @@ function RedirectShort() {
         if (response.ok) {
           const data = await response.json();
           let url = data.originalUrl;
+          setOriginalUrl(url);
+          // Ensure the URL starts with http:// or https://
           if (!url.startsWith('http://') && !url.startsWith('https://')) {
             url = 'http://' + url;
           }
@@ -282,7 +285,23 @@ function RedirectShort() {
     return <div>Error: {error}</div>;
   }
 
-  return null;
+  if (!originalUrl) {
+    return <div>No URL found for this short link.</div>;
+  }
+
+  return (
+    <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+      <h2>Original URL:</h2>
+      <a
+        href={originalUrl.startsWith('http') ? originalUrl : `http://${originalUrl}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ fontSize: '1.2rem', color: '#2563eb', wordBreak: 'break-all' }}
+      >
+        {originalUrl}
+      </a>
+    </div>
+  );;
 }
 
 function App() {

@@ -193,14 +193,34 @@ function URLShortener() {
                         </a>
                       </td>
                       <td className="p-2">
-                        <a
-                          href={'http://localhost:8080/short/' + shortened.shortId}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-500 hover:underline"
+                        <button
+                          type="button"
+                          onClick={async (e) => {
+                            try {
+                              const response = await fetch('http://localhost:8080/short/' + shortened.shortId);
+                              if (response.ok) {
+                                const data = await response.json();
+                                let url = data.originalUrl;
+                                if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
+                                  url = 'http://' + url;
+                                }
+                                if (url) {
+                                  window.open(url, '_blank');
+                                } else {
+                                  alert('Original URL not found.');
+                                }
+                              } else {
+                                alert('Short link not found.');
+                              }
+                            } catch (err) {
+                              alert('Error fetching original URL.');
+                            }
+                          }}
+                          className="text-blue-500 hover:underline bg-transparent border-none p-0 m-0 cursor-pointer"
+                          style={{ background: 'none' }}
                         >
                           {shortened.shortUrl}
-                        </a>
+                        </button>
                       </td>
                       <td className="p-2">
                         <div className="flex space-x-2">

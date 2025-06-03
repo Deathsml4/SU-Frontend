@@ -282,7 +282,19 @@ function RedirectShort() {
     return <div>Error: {error}</div>;
   }
 
-  return null;
+  return (
+    <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+      <h2>Original URL:</h2>
+      <a
+        href={originalUrl.startsWith('http') ? originalUrl : `http://${originalUrl}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ fontSize: '1.2rem', color: '#2563eb', wordBreak: 'break-all' }}
+      >
+        {originalUrl}
+      </a>
+    </div>
+  );
 }
 
 function App() {

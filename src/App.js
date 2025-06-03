@@ -193,7 +193,7 @@ function URLShortener() {
                       </td>
                       <td className="p-2">
                         <a
-                          href={`https://jolly-grass-002fabb0f.6.azurestaticapps.net/short/${shortened.shortId}`}
+                          href={`http://localhost:8080/short/${shortened.shortId}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-500 hover:underline"

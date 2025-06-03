@@ -194,9 +194,29 @@ function URLShortener() {
                       </td>
                       <td className="p-2">
                         <a
-                          href={'http://localhost:8080/short/' + shortened.shortId}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          href="#"
+                          onClick={async (e) => {
+                            e.preventDefault();
+                            try {
+                              const response = await fetch('http://localhost:8080/short/' + shortened.shortId);
+                              if (response.ok) {
+                                const data = await response.json();
+                                let url = data.originalUrl;
+                                if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
+                                  url = 'http://' + url;
+                                }
+                                if (url) {
+                                  window.open(url, '_blank');
+                                } else {
+                                  alert('Original URL not found.');
+                                }
+                              } else {
+                                alert('Short link not found.');
+                              }
+                            } catch (err) {
+                              alert('Error fetching original URL.');
+                            }
+                          }}
                           className="text-blue-500 hover:underline"
                         >
                           {shortened.shortUrl}

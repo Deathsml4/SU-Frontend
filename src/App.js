@@ -119,6 +119,7 @@ function URLShortener() {
     alert(`Copied: https://jolly-grass-002fabb0f.6.azurestaticapps.net/short/${shortId}`);
   };
 
+
   const handleDelete = async (index) => {
     const urlToDelete = shortenedURLList[index];
     try {
@@ -193,7 +194,7 @@ function URLShortener() {
                       </td>
                       <td className="p-2">
                         <a
-                          href={`http://localhost:8080/short/${shortened.shortId}`}
+                          href={shortened.fullUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-500 hover:underline"

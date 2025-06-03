@@ -107,7 +107,7 @@ function URLShortener() {
       navigator.share({
         title: 'Shortened URL',
         text: 'Check out this URL!',
-        url: `http://localhost:3000/short/${shortId}`,
+        url: `https://jolly-grass-002fabb0f.6.azurestaticapps.net/short/${shortId}`,
       });
     } else {
       alert('Share not supported on this browser.');
@@ -115,8 +115,8 @@ function URLShortener() {
   };
 
   const handleCopy = (shortId) => {
-    navigator.clipboard.writeText(`http://localhost:3000/short/${shortId}`);
-    alert(`Copied: http://localhost:3000/short/${shortId}`);
+    navigator.clipboard.writeText(`https://jolly-grass-002fabb0f.6.azurestaticapps.net/short/${shortId}`);
+    alert(`Copied: https://jolly-grass-002fabb0f.6.azurestaticapps.net/short/${shortId}`);
   };
 
   const handleDelete = async (index) => {
@@ -193,7 +193,7 @@ function URLShortener() {
                       </td>
                       <td className="p-2">
                         <a
-                          href={`http://localhost:3000/short/${shortened.shortId}`}
+                          href={`https://jolly-grass-002fabb0f.6.azurestaticapps.net/short/${shortened.shortId}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-500 hover:underline"

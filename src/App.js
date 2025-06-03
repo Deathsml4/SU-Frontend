@@ -194,7 +194,7 @@ function URLShortener() {
                       </td>
                       <td className="p-2">
                         <a
-                          href={shortened.fullUrl}
+                          href={'http://localhost:8080/short/' + shortened.shortId}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-500 hover:underline"
